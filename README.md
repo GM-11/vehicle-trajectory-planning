@@ -186,4 +186,3 @@ The system tracks several performance indicators:
 ---
 
 *This project is part of the "Introduction to Self-Driving Cars" course and serves as a practical implementation of vehicle trajectory planning using a 2D controller in a simulated environment.*
-# vehicle-trajectry-planner
