@@ -176,6 +176,60 @@ The system tracks several performance indicators:
 - **Control Smoothness**: Rate of change in steering and throttle
 - **Trajectory Completion**: Successful waypoint navigation
 
+## Controller Output Analysis
+
+### Trajectory Data
+
+The controller outputs trajectory data to `controller_output/trajectory.txt` with the following format:
+```
+x_position, y_position, velocity, timestamp
+```
+
+Example trajectory data shows the vehicle successfully navigating waypoints:
+- **Starting Position**: (-183.8, 80.2) at t=0.0s
+- **Final Position**: (27.7, -619.3) at t=102.3s
+- **Total Distance**: ~700 meters
+- **Maximum Speed**: ~22.4 m/s
+
+### Performance Visualizations
+
+The controller automatically generates the following performance plots in the `controller_output/` directory:
+
+#### 1. Vehicle Trajectory
+![Vehicle Trajectory](controller_output/trajectory.png)
+
+The trajectory plot shows the actual path taken by the vehicle through the waypoint sequence. The smooth, continuous path demonstrates effective lateral control with the pure pursuit algorithm.
+
+#### 2. Forward Speed Profile
+![Forward Speed](controller_output/forward_speed.png)
+
+The speed profile shows the vehicle's velocity over time, demonstrating the PID controller's ability to maintain target speeds and smoothly accelerate/decelerate as needed.
+
+#### 3. Throttle Commands
+![Throttle Output](controller_output/throttle_output.png)
+
+The throttle output plot shows the longitudinal controller's throttle commands over time, indicating smooth acceleration control without excessive oscillation.
+
+#### 4. Brake Commands
+![Brake Output](controller_output/brake_output.png)
+
+The brake output demonstrates the controller's deceleration commands, showing when and how the vehicle reduces speed during the trajectory.
+
+#### 5. Steering Commands
+![Steering Output](controller_output/steer_output.png)
+
+The steering output plot shows the lateral controller's steering angle commands over time, demonstrating the pure pursuit algorithm's smooth path following behavior.
+
+### Key Performance Observations
+
+From the controller output visualizations:
+- **Smooth Trajectory**: Clean, continuous path with no sharp deviations or oscillations
+- **Effective Speed Control**: Gradual acceleration from 0 to ~22 m/s with smooth transitions
+- **Stable Steering**: Steering commands show appropriate responses without over-correction
+- **Coordinated Control**: Throttle and brake commands work together for optimal speed regulation
+- **Successful Navigation**: Complete waypoint sequence traversed in ~102 seconds
+- **Control Smoothness**: All control outputs demonstrate stable, non-oscillatory behavior
+
 ## References
 
 - CARLA Simulator Documentation
